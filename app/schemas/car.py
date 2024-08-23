@@ -33,7 +33,13 @@ class CarCreate(CarBase):
 
 
 class CarUpdate(CarBase):
-    pass
+    brand: str | None = None
+    model: str | None = None
+    year: int | None = None
+    fuel_type: FuelType | None = None
+    transmission: TransmissionType | None = None
+    mileage: int | None = None
+    price: int | None = None
 
 
 class CarDB(CarBase):
