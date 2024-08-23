@@ -65,7 +65,7 @@ async def get_car(
     return car
 
 
-@router.put(
+@router.patch(
     '/{car_id}',
     response_model=CarUpdate
 )
