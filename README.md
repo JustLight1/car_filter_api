@@ -69,9 +69,8 @@ API должно поддерживать следующие функции:
    python -m pip install --upgrade pip
    pip install -r requirements.txt
    ```
-4. Перейдите в папку product и выполните миграции:
+4. Создайте файл .env и заполните его по примеру .env.example и выполните миграции:
    ```
-   cd car_filter_api
    alembic upgrade head
    ```
 5. Запустите проект:
