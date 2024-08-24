@@ -1,4 +1,4 @@
-from fastapi import HTTPException
+from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.crud.car import car_crud
@@ -25,7 +25,7 @@ async def check_car_exists(
     car = await car_crud.get(car_id, session)
     if car is None:
         raise HTTPException(
-            status_code=404,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail='Авто не найден!'
         )
     return car
