@@ -6,7 +6,7 @@ from app.core.db import Base
 
 class Car(Base):
     """
-    Модель переговорной комнаты.
+    Модель авто.
 
     Inherits:
         Base: Базовый класс для всех моделей.
@@ -16,9 +16,13 @@ class Car(Base):
             id (Mapped[int]): Первичный ключ.
 
     Attributes:
-        name (Mapped[str]): Название переговорной комнаты.
-        description (Mapped[str or None]): Описание переговорной комнаты.
-        reservations (relationship): Связь с моделью бронирований.
+        brand str: Марка авто.
+        model str: Модель авто.
+        year int: Год производства авто.
+        fuel_type str: Тип топлива.
+        transmission str: Тип КПП.
+        mileage int: Пробег.
+        price int: Цена.
     """
     brand: Mapped[str] = mapped_column(String(50), index=True, nullable=False)
     model: Mapped[str] = mapped_column(String(50), index=True)

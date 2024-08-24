@@ -21,6 +21,13 @@ class CRUDCar(CRUDBase[
         filter: CarFilter,
         session: AsyncSession,
     ) -> list[Car]:
+        """
+        Выводит список отфильтрованных авто.
+
+        Args:
+            filter: Набор фильтров.
+            session (AsyncSession): Асинхронная сессия SQLAlchemy.
+        """
         query = select(self.model)
         query = filter.filter(query)
         query = filter.sort(query)

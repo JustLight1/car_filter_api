@@ -5,6 +5,9 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class FuelType(str, Enum):
+    """
+    Тип топлива.
+    """
     benzine = 'бензин'
     diesel = 'дизель'
     electric = 'электричество'
@@ -12,6 +15,9 @@ class FuelType(str, Enum):
 
 
 class TransmissionType(str, Enum):
+    """
+    Тип КПП.
+    """
     manual = 'механическая'
     automatic = 'автоматическая'
     variator = 'вариатор'
@@ -19,6 +25,18 @@ class TransmissionType(str, Enum):
 
 
 class CarBase(BaseModel):
+    """
+    Базовая схема авто.
+
+    Attributes:
+        brand str: Марка авто.
+        model str: Модель авто.
+        year int: Год производства авто.
+        fuel_type str: Тип топлива.
+        transmission str: Тип КПП.
+        mileage int: Пробег.
+        price int: Цена.
+    """
     brand: str = Field(..., min_length=1, max_length=50)
     model: str = Field(..., min_length=1, max_length=50)
     year: int = Field(..., ge=1886, le=datetime.now().year)
@@ -29,10 +47,17 @@ class CarBase(BaseModel):
 
 
 class CarCreate(CarBase):
+    """
+    Схема для создания нового авто.
+    """
     pass
 
 
 class CarUpdate(CarBase):
+    """
+    Схема для обновления авто.
+    """
+
     brand: str | None = None
     model: str | None = None
     year: int | None = None
